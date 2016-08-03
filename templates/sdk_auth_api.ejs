@@ -101,6 +101,20 @@ Remarks:
 * The `state` parameter will be sent back should be used for XSRF and contextual information (like a return url).
   </div>
 
+<!-- POST /oauth/token -->
+  <div class="markdown" data-verb="POST" data-path="/oauth/token" data-description="Obtain a token to call the API">
+Auth0 Management API requires an access_token. You can get one by authenticating with your `client_id` and `client_secret` (It will be valid for 24 hours).
+
+<pre><code><span class='http-verb'>POST</span> <span class="client_namespace"></span>oauth/token
+Content-Type: 'application/json'
+<form id='ro-form'>{
+  "client_id":   "<span class="client_client_id"></span>", // <span class="client_name"></span>
+  "client_secret":    "<input type="text" id="client_secret" required>"
+  "grant_type":  "<select id="ro-grant_type"><option>authorization_code</option><option>client_credentials</option></select>"
+}
+</form></code></pre>
+ 
+
 <!-- POST /oauth/ro -->
   <div class="markdown" data-verb="POST" data-path="/oauth/ro" data-description="Login using username/password (active authentication)">
 Given the user credentials and the `connection` specified, it will do the authentication on the provider and return a JSON with the `access_token` and `id_token`. This endpoint only works for database connections, passwordless connections, Active Directory/LDAP, Windows Azure AD and ADFS.
