@@ -186,11 +186,6 @@ define(function(require) {
     this['oauth-token'] = function() {
 
       var additional_parameters = validateJsonText($('#oauth-token-additional_parameters').val());
-      if (!additional_parameters) {
-        $('#oauth-token-result').text('Invalid additional parameters');
-        $('#oauth-token-result').parent().addClass('error');
-        return;
-      }
 
       var data = {
         client_id: client.clientID,
