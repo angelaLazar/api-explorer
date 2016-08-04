@@ -189,7 +189,7 @@ define(function(require) {
 
       var data = {
         client_id: client.clientID,
-        client_secret: $('#oauth-token-client_secret').val(),
+        client_secret: client.clientSecret,
         grant_type: $('#oauth-token-grant_type option:selected').val(),
         additionalParameters: additional_parameters
       };
