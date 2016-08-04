@@ -196,7 +196,6 @@ define(function(require) {
         client_id: client.clientID,
         client_secret: $('#oauth-token-client_secret').val(),
         grant_type: $('#oauth-token-grant_type option:selected').val(),
-        code: $('#oauth-token-code').val(),
         additionalParameters: additional_parameters
       };
 
