@@ -109,10 +109,25 @@ Auth0 Management API requires an access_token. You can get one by authenticating
 Content-Type: 'application/json'
 <form id='ro-form'>{
   "client_id":   "<span class="client_client_id"></span>", // <span class="client_name"></span>
-  "client_secret":    "<input type="text" id="client_secret" required>"
-  "grant_type":  "<select id="ro-grant_type"><option>authorization_code</option><option>client_credentials</option></select>"
+  "client_secret":    "<input type="text" id="oauth-token-client_secret" required>"
+  "grant_type":  "<select id="oauth-token-grant_type"><option>authorization_code</option><option>client_credentials</option></select>"
+  "additional_parameters":  "<input type="text" id="oauth-token-additional_parameters" style="width: 400px;" placeholder="additional parameters">"
 }
 </form></code></pre>
+
+<button class='btn btn-primary btn-tryme'
+        data-result='oauth-token-result'
+        data-runner='oauth-token'>
+   Try me!
+</button>
+
+Remarks:
+
+* If `grant_type`=`authorization_code` then include `code` and `redirect_uri` in the additional parameters. If `grant_type`=`client_credentials` then include `audience` in the additional parameters.
+
+* Once authenticated, the `access_token` can be included in the request as part of the querystring (`?access_token=...`) or in an HTTP header (`Authorization: Bearer ...access_token...`).
+
+* An access token lasts for 24 hours, you will need to handle asking for a token everytime you make a request to the API or vigorously handle 401 responses.
  
 
 <!-- POST /oauth/ro -->

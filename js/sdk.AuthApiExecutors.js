@@ -185,11 +185,19 @@ define(function(require) {
 
     this['oauth-token'] = function() {
 
+      var additional_parameters = validateJsonText($('#oauth-token-additional_parameters').val());
+      if (!additional_parameters) {
+        $('#oauth-token-result').text('Invalid additional parameters');
+        $('#oauth-token-result').parent().addClass('error');
+        return;
+      }
+
       var data = {
         client_id: client.clientID,
-        client_secret: client.clientSecret,
-        grant_type: $('#oauth-token-grant_type').text(),
-        code: $('#oauth-token-code').val()
+        client_secret: $('#oauth-token-client_secret').val(),
+        grant_type: $('#oauth-token-grant_type option:selected').val(),
+        code: $('#oauth-token-code').val(),
+        additionalParameters: additional_parameters
       };
 
       var url = urljoin(client.namespace, '/oauth/token');
